@@ -1,0 +1,543 @@
+Grammar:
+
+Rule 0     S' -> program
+Rule 1     program -> exprs
+Rule 2     exprs -> <empty>
+Rule 3     exprs -> expr exprs
+Rule 4     expr -> SYMBOL
+Rule 5     expr -> STRING
+Rule 6     expr -> NUMBER
+Rule 7     expr -> ( expr expr_list )
+Rule 8     expr -> ( SYMBOL [ param_list ] expr )
+Rule 9     expr -> ( SYMBOL SYMBOL [ param_list ] expr )
+Rule 10    expr -> ( SYMBOL expr expr expr )
+Rule 11    expr -> ( SYMBOL expr_list )
+Rule 12    expr -> ( SYMBOL SYMBOL expr )
+Rule 13    expr_list -> <empty>
+Rule 14    expr_list -> expr expr_list
+Rule 15    param_list -> <empty>
+Rule 16    param_list -> SYMBOL param_list
+
+Terminals, with rules where they appear:
+
+(                    : 7 8 9 10 11 12
+)                    : 7 8 9 10 11 12
+NUMBER               : 6
+STRING               : 5
+SYMBOL               : 4 8 9 9 10 11 12 12 16
+[                    : 8 9
+]                    : 8 9
+error                : 
+
+Nonterminals, with rules where they appear:
+
+expr                 : 3 7 8 9 10 10 10 12 14
+expr_list            : 7 11 14
+exprs                : 1 3
+param_list           : 8 9 16
+program              : 0
+
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . exprs
+    (2) exprs -> .
+    (3) exprs -> . expr exprs
+    (4) expr -> . SYMBOL
+    (5) expr -> . STRING
+    (6) expr -> . NUMBER
+    (7) expr -> . ( expr expr_list )
+    (8) expr -> . ( SYMBOL [ param_list ] expr )
+    (9) expr -> . ( SYMBOL SYMBOL [ param_list ] expr )
+    (10) expr -> . ( SYMBOL expr expr expr )
+    (11) expr -> . ( SYMBOL expr_list )
+    (12) expr -> . ( SYMBOL SYMBOL expr )
+    $end            reduce using rule 2 (exprs -> .)
+    SYMBOL          shift and go to state 4
+    STRING          shift and go to state 5
+    NUMBER          shift and go to state 6
+    (               shift and go to state 7
+
+    program                        shift and go to state 1
+    exprs                          shift and go to state 2
+    expr                           shift and go to state 3
+
+state 1
+
+    (0) S' -> program .
+
+
+state 2
+
+    (1) program -> exprs .
+    $end            reduce using rule 1 (program -> exprs .)
+
+
+state 3
+
+    (3) exprs -> expr . exprs
+    (2) exprs -> .
+    (3) exprs -> . expr exprs
+    (4) expr -> . SYMBOL
+    (5) expr -> . STRING
+    (6) expr -> . NUMBER
+    (7) expr -> . ( expr expr_list )
+    (8) expr -> . ( SYMBOL [ param_list ] expr )
+    (9) expr -> . ( SYMBOL SYMBOL [ param_list ] expr )
+    (10) expr -> . ( SYMBOL expr expr expr )
+    (11) expr -> . ( SYMBOL expr_list )
+    (12) expr -> . ( SYMBOL SYMBOL expr )
+    $end            reduce using rule 2 (exprs -> .)
+    SYMBOL          shift and go to state 4
+    STRING          shift and go to state 5
+    NUMBER          shift and go to state 6
+    (               shift and go to state 7
+
+    expr                           shift and go to state 3
+    exprs                          shift and go to state 8
+
+state 4
+
+    (4) expr -> SYMBOL .
+    SYMBOL          reduce using rule 4 (expr -> SYMBOL .)
+    STRING          reduce using rule 4 (expr -> SYMBOL .)
+    NUMBER          reduce using rule 4 (expr -> SYMBOL .)
+    (               reduce using rule 4 (expr -> SYMBOL .)
+    $end            reduce using rule 4 (expr -> SYMBOL .)
+    )               reduce using rule 4 (expr -> SYMBOL .)
+
+
+state 5
+
+    (5) expr -> STRING .
+    SYMBOL          reduce using rule 5 (expr -> STRING .)
+    STRING          reduce using rule 5 (expr -> STRING .)
+    NUMBER          reduce using rule 5 (expr -> STRING .)
+    (               reduce using rule 5 (expr -> STRING .)
+    $end            reduce using rule 5 (expr -> STRING .)
+    )               reduce using rule 5 (expr -> STRING .)
+
+
+state 6
+
+    (6) expr -> NUMBER .
+    SYMBOL          reduce using rule 6 (expr -> NUMBER .)
+    STRING          reduce using rule 6 (expr -> NUMBER .)
+    NUMBER          reduce using rule 6 (expr -> NUMBER .)
+    (               reduce using rule 6 (expr -> NUMBER .)
+    $end            reduce using rule 6 (expr -> NUMBER .)
+    )               reduce using rule 6 (expr -> NUMBER .)
+
+
+state 7
+
+    (7) expr -> ( . expr expr_list )
+    (8) expr -> ( . SYMBOL [ param_list ] expr )
+    (9) expr -> ( . SYMBOL SYMBOL [ param_list ] expr )
+    (10) expr -> ( . SYMBOL expr expr expr )
+    (11) expr -> ( . SYMBOL expr_list )
+    (12) expr -> ( . SYMBOL SYMBOL expr )
+    (4) expr -> . SYMBOL
+    (5) expr -> . STRING
+    (6) expr -> . NUMBER
+    (7) expr -> . ( expr expr_list )
+    (8) expr -> . ( SYMBOL [ param_list ] expr )
+    (9) expr -> . ( SYMBOL SYMBOL [ param_list ] expr )
+    (10) expr -> . ( SYMBOL expr expr expr )
+    (11) expr -> . ( SYMBOL expr_list )
+    (12) expr -> . ( SYMBOL SYMBOL expr )
+    SYMBOL          shift and go to state 10
+    STRING          shift and go to state 5
+    NUMBER          shift and go to state 6
+    (               shift and go to state 7
+
+    expr                           shift and go to state 9
+
+state 8
+
+    (3) exprs -> expr exprs .
+    $end            reduce using rule 3 (exprs -> expr exprs .)
+
+
+state 9
+
+    (7) expr -> ( expr . expr_list )
+    (13) expr_list -> .
+    (14) expr_list -> . expr expr_list
+    (4) expr -> . SYMBOL
+    (5) expr -> . STRING
+    (6) expr -> . NUMBER
+    (7) expr -> . ( expr expr_list )
+    (8) expr -> . ( SYMBOL [ param_list ] expr )
+    (9) expr -> . ( SYMBOL SYMBOL [ param_list ] expr )
+    (10) expr -> . ( SYMBOL expr expr expr )
+    (11) expr -> . ( SYMBOL expr_list )
+    (12) expr -> . ( SYMBOL SYMBOL expr )
+    )               reduce using rule 13 (expr_list -> .)
+    SYMBOL          shift and go to state 4
+    STRING          shift and go to state 5
+    NUMBER          shift and go to state 6
+    (               shift and go to state 7
+
+    expr                           shift and go to state 11
+    expr_list                      shift and go to state 12
+
+state 10
+
+    (8) expr -> ( SYMBOL . [ param_list ] expr )
+    (9) expr -> ( SYMBOL . SYMBOL [ param_list ] expr )
+    (10) expr -> ( SYMBOL . expr expr expr )
+    (11) expr -> ( SYMBOL . expr_list )
+    (12) expr -> ( SYMBOL . SYMBOL expr )
+    (4) expr -> SYMBOL .
+    (4) expr -> . SYMBOL
+    (5) expr -> . STRING
+    (6) expr -> . NUMBER
+    (7) expr -> . ( expr expr_list )
+    (8) expr -> . ( SYMBOL [ param_list ] expr )
+    (9) expr -> . ( SYMBOL SYMBOL [ param_list ] expr )
+    (10) expr -> . ( SYMBOL expr expr expr )
+    (11) expr -> . ( SYMBOL expr_list )
+    (12) expr -> . ( SYMBOL SYMBOL expr )
+    (13) expr_list -> .
+    (14) expr_list -> . expr expr_list
+  ! shift/reduce conflict for SYMBOL resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+  ! shift/reduce conflict for NUMBER resolved as shift
+  ! shift/reduce conflict for ( resolved as shift
+  ! reduce/reduce conflict for ) resolved using rule 13 (expr_list -> .)
+    [               shift and go to state 14
+    SYMBOL          shift and go to state 13
+    STRING          shift and go to state 5
+    NUMBER          shift and go to state 6
+    (               shift and go to state 7
+    )               reduce using rule 13 (expr_list -> .)
+
+    expr                           shift and go to state 15
+    expr_list                      shift and go to state 16
+
+state 11
+
+    (14) expr_list -> expr . expr_list
+    (13) expr_list -> .
+    (14) expr_list -> . expr expr_list
+    (4) expr -> . SYMBOL
+    (5) expr -> . STRING
+    (6) expr -> . NUMBER
+    (7) expr -> . ( expr expr_list )
+    (8) expr -> . ( SYMBOL [ param_list ] expr )
+    (9) expr -> . ( SYMBOL SYMBOL [ param_list ] expr )
+    (10) expr -> . ( SYMBOL expr expr expr )
+    (11) expr -> . ( SYMBOL expr_list )
+    (12) expr -> . ( SYMBOL SYMBOL expr )
+    )               reduce using rule 13 (expr_list -> .)
+    SYMBOL          shift and go to state 4
+    STRING          shift and go to state 5
+    NUMBER          shift and go to state 6
+    (               shift and go to state 7
+
+    expr                           shift and go to state 11
+    expr_list                      shift and go to state 17
+
+state 12
+
+    (7) expr -> ( expr expr_list . )
+    )               shift and go to state 18
+
+
+state 13
+
+    (9) expr -> ( SYMBOL SYMBOL . [ param_list ] expr )
+    (12) expr -> ( SYMBOL SYMBOL . expr )
+    (4) expr -> SYMBOL .
+    (4) expr -> . SYMBOL
+    (5) expr -> . STRING
+    (6) expr -> . NUMBER
+    (7) expr -> . ( expr expr_list )
+    (8) expr -> . ( SYMBOL [ param_list ] expr )
+    (9) expr -> . ( SYMBOL SYMBOL [ param_list ] expr )
+    (10) expr -> . ( SYMBOL expr expr expr )
+    (11) expr -> . ( SYMBOL expr_list )
+    (12) expr -> . ( SYMBOL SYMBOL expr )
+  ! shift/reduce conflict for SYMBOL resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+  ! shift/reduce conflict for NUMBER resolved as shift
+  ! shift/reduce conflict for ( resolved as shift
+    [               shift and go to state 19
+    )               reduce using rule 4 (expr -> SYMBOL .)
+    SYMBOL          shift and go to state 4
+    STRING          shift and go to state 5
+    NUMBER          shift and go to state 6
+    (               shift and go to state 7
+
+    expr                           shift and go to state 20
+
+state 14
+
+    (8) expr -> ( SYMBOL [ . param_list ] expr )
+    (15) param_list -> .
+    (16) param_list -> . SYMBOL param_list
+    ]               reduce using rule 15 (param_list -> .)
+    SYMBOL          shift and go to state 21
+
+    param_list                     shift and go to state 22
+
+state 15
+
+    (10) expr -> ( SYMBOL expr . expr expr )
+    (14) expr_list -> expr . expr_list
+    (4) expr -> . SYMBOL
+    (5) expr -> . STRING
+    (6) expr -> . NUMBER
+    (7) expr -> . ( expr expr_list )
+    (8) expr -> . ( SYMBOL [ param_list ] expr )
+    (9) expr -> . ( SYMBOL SYMBOL [ param_list ] expr )
+    (10) expr -> . ( SYMBOL expr expr expr )
+    (11) expr -> . ( SYMBOL expr_list )
+    (12) expr -> . ( SYMBOL SYMBOL expr )
+    (13) expr_list -> .
+    (14) expr_list -> . expr expr_list
+    SYMBOL          shift and go to state 4
+    STRING          shift and go to state 5
+    NUMBER          shift and go to state 6
+    (               shift and go to state 7
+    )               reduce using rule 13 (expr_list -> .)
+
+    expr                           shift and go to state 23
+    expr_list                      shift and go to state 17
+
+state 16
+
+    (11) expr -> ( SYMBOL expr_list . )
+    )               shift and go to state 24
+
+
+state 17
+
+    (14) expr_list -> expr expr_list .
+    )               reduce using rule 14 (expr_list -> expr expr_list .)
+
+
+state 18
+
+    (7) expr -> ( expr expr_list ) .
+    SYMBOL          reduce using rule 7 (expr -> ( expr expr_list ) .)
+    STRING          reduce using rule 7 (expr -> ( expr expr_list ) .)
+    NUMBER          reduce using rule 7 (expr -> ( expr expr_list ) .)
+    (               reduce using rule 7 (expr -> ( expr expr_list ) .)
+    $end            reduce using rule 7 (expr -> ( expr expr_list ) .)
+    )               reduce using rule 7 (expr -> ( expr expr_list ) .)
+
+
+state 19
+
+    (9) expr -> ( SYMBOL SYMBOL [ . param_list ] expr )
+    (15) param_list -> .
+    (16) param_list -> . SYMBOL param_list
+    ]               reduce using rule 15 (param_list -> .)
+    SYMBOL          shift and go to state 21
+
+    param_list                     shift and go to state 25
+
+state 20
+
+    (12) expr -> ( SYMBOL SYMBOL expr . )
+    )               shift and go to state 26
+
+
+state 21
+
+    (16) param_list -> SYMBOL . param_list
+    (15) param_list -> .
+    (16) param_list -> . SYMBOL param_list
+    ]               reduce using rule 15 (param_list -> .)
+    SYMBOL          shift and go to state 21
+
+    param_list                     shift and go to state 27
+
+state 22
+
+    (8) expr -> ( SYMBOL [ param_list . ] expr )
+    ]               shift and go to state 28
+
+
+state 23
+
+    (10) expr -> ( SYMBOL expr expr . expr )
+    (14) expr_list -> expr . expr_list
+    (4) expr -> . SYMBOL
+    (5) expr -> . STRING
+    (6) expr -> . NUMBER
+    (7) expr -> . ( expr expr_list )
+    (8) expr -> . ( SYMBOL [ param_list ] expr )
+    (9) expr -> . ( SYMBOL SYMBOL [ param_list ] expr )
+    (10) expr -> . ( SYMBOL expr expr expr )
+    (11) expr -> . ( SYMBOL expr_list )
+    (12) expr -> . ( SYMBOL SYMBOL expr )
+    (13) expr_list -> .
+    (14) expr_list -> . expr expr_list
+    SYMBOL          shift and go to state 4
+    STRING          shift and go to state 5
+    NUMBER          shift and go to state 6
+    (               shift and go to state 7
+    )               reduce using rule 13 (expr_list -> .)
+
+    expr                           shift and go to state 29
+    expr_list                      shift and go to state 17
+
+state 24
+
+    (11) expr -> ( SYMBOL expr_list ) .
+    SYMBOL          reduce using rule 11 (expr -> ( SYMBOL expr_list ) .)
+    STRING          reduce using rule 11 (expr -> ( SYMBOL expr_list ) .)
+    NUMBER          reduce using rule 11 (expr -> ( SYMBOL expr_list ) .)
+    (               reduce using rule 11 (expr -> ( SYMBOL expr_list ) .)
+    $end            reduce using rule 11 (expr -> ( SYMBOL expr_list ) .)
+    )               reduce using rule 11 (expr -> ( SYMBOL expr_list ) .)
+
+
+state 25
+
+    (9) expr -> ( SYMBOL SYMBOL [ param_list . ] expr )
+    ]               shift and go to state 30
+
+
+state 26
+
+    (12) expr -> ( SYMBOL SYMBOL expr ) .
+    SYMBOL          reduce using rule 12 (expr -> ( SYMBOL SYMBOL expr ) .)
+    STRING          reduce using rule 12 (expr -> ( SYMBOL SYMBOL expr ) .)
+    NUMBER          reduce using rule 12 (expr -> ( SYMBOL SYMBOL expr ) .)
+    (               reduce using rule 12 (expr -> ( SYMBOL SYMBOL expr ) .)
+    $end            reduce using rule 12 (expr -> ( SYMBOL SYMBOL expr ) .)
+    )               reduce using rule 12 (expr -> ( SYMBOL SYMBOL expr ) .)
+
+
+state 27
+
+    (16) param_list -> SYMBOL param_list .
+    ]               reduce using rule 16 (param_list -> SYMBOL param_list .)
+
+
+state 28
+
+    (8) expr -> ( SYMBOL [ param_list ] . expr )
+    (4) expr -> . SYMBOL
+    (5) expr -> . STRING
+    (6) expr -> . NUMBER
+    (7) expr -> . ( expr expr_list )
+    (8) expr -> . ( SYMBOL [ param_list ] expr )
+    (9) expr -> . ( SYMBOL SYMBOL [ param_list ] expr )
+    (10) expr -> . ( SYMBOL expr expr expr )
+    (11) expr -> . ( SYMBOL expr_list )
+    (12) expr -> . ( SYMBOL SYMBOL expr )
+    SYMBOL          shift and go to state 4
+    STRING          shift and go to state 5
+    NUMBER          shift and go to state 6
+    (               shift and go to state 7
+
+    expr                           shift and go to state 31
+
+state 29
+
+    (10) expr -> ( SYMBOL expr expr expr . )
+    (14) expr_list -> expr . expr_list
+    (13) expr_list -> .
+    (14) expr_list -> . expr expr_list
+    (4) expr -> . SYMBOL
+    (5) expr -> . STRING
+    (6) expr -> . NUMBER
+    (7) expr -> . ( expr expr_list )
+    (8) expr -> . ( SYMBOL [ param_list ] expr )
+    (9) expr -> . ( SYMBOL SYMBOL [ param_list ] expr )
+    (10) expr -> . ( SYMBOL expr expr expr )
+    (11) expr -> . ( SYMBOL expr_list )
+    (12) expr -> . ( SYMBOL SYMBOL expr )
+  ! shift/reduce conflict for ) resolved as shift
+    )               shift and go to state 32
+    SYMBOL          shift and go to state 4
+    STRING          shift and go to state 5
+    NUMBER          shift and go to state 6
+    (               shift and go to state 7
+
+    expr                           shift and go to state 11
+    expr_list                      shift and go to state 17
+
+state 30
+
+    (9) expr -> ( SYMBOL SYMBOL [ param_list ] . expr )
+    (4) expr -> . SYMBOL
+    (5) expr -> . STRING
+    (6) expr -> . NUMBER
+    (7) expr -> . ( expr expr_list )
+    (8) expr -> . ( SYMBOL [ param_list ] expr )
+    (9) expr -> . ( SYMBOL SYMBOL [ param_list ] expr )
+    (10) expr -> . ( SYMBOL expr expr expr )
+    (11) expr -> . ( SYMBOL expr_list )
+    (12) expr -> . ( SYMBOL SYMBOL expr )
+    SYMBOL          shift and go to state 4
+    STRING          shift and go to state 5
+    NUMBER          shift and go to state 6
+    (               shift and go to state 7
+
+    expr                           shift and go to state 33
+
+state 31
+
+    (8) expr -> ( SYMBOL [ param_list ] expr . )
+    )               shift and go to state 34
+
+
+state 32
+
+    (10) expr -> ( SYMBOL expr expr expr ) .
+    SYMBOL          reduce using rule 10 (expr -> ( SYMBOL expr expr expr ) .)
+    STRING          reduce using rule 10 (expr -> ( SYMBOL expr expr expr ) .)
+    NUMBER          reduce using rule 10 (expr -> ( SYMBOL expr expr expr ) .)
+    (               reduce using rule 10 (expr -> ( SYMBOL expr expr expr ) .)
+    $end            reduce using rule 10 (expr -> ( SYMBOL expr expr expr ) .)
+    )               reduce using rule 10 (expr -> ( SYMBOL expr expr expr ) .)
+
+
+state 33
+
+    (9) expr -> ( SYMBOL SYMBOL [ param_list ] expr . )
+    )               shift and go to state 35
+
+
+state 34
+
+    (8) expr -> ( SYMBOL [ param_list ] expr ) .
+    SYMBOL          reduce using rule 8 (expr -> ( SYMBOL [ param_list ] expr ) .)
+    STRING          reduce using rule 8 (expr -> ( SYMBOL [ param_list ] expr ) .)
+    NUMBER          reduce using rule 8 (expr -> ( SYMBOL [ param_list ] expr ) .)
+    (               reduce using rule 8 (expr -> ( SYMBOL [ param_list ] expr ) .)
+    $end            reduce using rule 8 (expr -> ( SYMBOL [ param_list ] expr ) .)
+    )               reduce using rule 8 (expr -> ( SYMBOL [ param_list ] expr ) .)
+
+
+state 35
+
+    (9) expr -> ( SYMBOL SYMBOL [ param_list ] expr ) .
+    SYMBOL          reduce using rule 9 (expr -> ( SYMBOL SYMBOL [ param_list ] expr ) .)
+    STRING          reduce using rule 9 (expr -> ( SYMBOL SYMBOL [ param_list ] expr ) .)
+    NUMBER          reduce using rule 9 (expr -> ( SYMBOL SYMBOL [ param_list ] expr ) .)
+    (               reduce using rule 9 (expr -> ( SYMBOL SYMBOL [ param_list ] expr ) .)
+    $end            reduce using rule 9 (expr -> ( SYMBOL SYMBOL [ param_list ] expr ) .)
+    )               reduce using rule 9 (expr -> ( SYMBOL SYMBOL [ param_list ] expr ) .)
+
+
+Conflicts:
+
+shift/reduce conflict for SYMBOL in state 10 resolved as shift
+shift/reduce conflict for STRING in state 10 resolved as shift
+shift/reduce conflict for NUMBER in state 10 resolved as shift
+shift/reduce conflict for ( in state 10 resolved as shift
+shift/reduce conflict for SYMBOL in state 13 resolved as shift
+shift/reduce conflict for STRING in state 13 resolved as shift
+shift/reduce conflict for NUMBER in state 13 resolved as shift
+shift/reduce conflict for ( in state 13 resolved as shift
+shift/reduce conflict for ) in state 29 resolved as shift
+reduce/reduce conflict in state 10 resolved using rule expr_list -> <empty>
+rejected rule (expr -> SYMBOL) in state 10

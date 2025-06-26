@@ -1,0 +1,9 @@
+(def x 10)
+
+(defn soma [a b]
+  (+ a b)
+)
+
+((fn [x] (* x x)) 5)
+
+(if (> x 5) "maior" "menor")

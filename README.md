@@ -104,4 +104,4 @@ Usuário para compartilhamento: `fahadkalil` (no GitHub)
 
 ## 👤 Autor
 
-Desenvolvido por Bruno Basso — [brunobasso.dev](https://github.com/brunobasso)
+Desenvolvido por Bruno Basso — [brunobasso](https://github.com/brunobassoc)
